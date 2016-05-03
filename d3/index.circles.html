@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>D3 Setup</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="">
+    <script src="d3/d3.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>D3 Setup</header>
+    <script>
+      var dataset = [5, 10, 15, 20, 25];
+
+      var w = 500;
+      var h = 50;
+
+      var svg = d3.select("body")
+                  .append("svg")
+                  .attr("width", w)
+                  .attr("height", h)
+
+
+        var circles = svg.selectAll("circle")
+                        .data(dataset)
+                        .enter()
+                        .append("circle");
+
+        circles.attr("cx", function(d, i) {
+          return (i * 50) + 25;
+        })
+          .attr("cy", h/2)
+          .attr("r", function(d) {
+            return d;
+          })
+          .attr("fill", "lime")
+          .attr("stroke", "navy")
+          .attr("stroke-width", function(d) {
+            return d/2;   //This doesn't seem to have any effect.//
+          });
+
+    </script>
+  </body>
+</html>
